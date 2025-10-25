@@ -20,6 +20,9 @@ Route::view('/', 'home')->name('home');
 
 Route::view('contact', 'contact')->name('contact');     // Use the single-line view notation
 
+Route::view('playground', 'playground')->name('playground');
+
+
 Route::prefix('admin')->group(function () {
     Route::get('records', function (){
         $records = [                            // Define an array of records
