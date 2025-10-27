@@ -22,7 +22,7 @@
     @if (auth()->user()->admin)
         <flux:separator variant="subtle"/>
         <flux:navlist.group expandable heading="Admin">
-            <flux:navlist.item href="{{ route('admin.genres') }}">Genres</flux:navlist.item>
+            <flux:navlist.item href="#">Genres</flux:navlist.item>
             <flux:navlist.item href="{{ route('admin.records') }}">Records</flux:navlist.item>
             <flux:navlist.item href="{{ route('admin.covers') }}">Covers</flux:navlist.item>
             <flux:navlist.group expandable expanded="false" heading="Users">

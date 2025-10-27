@@ -37,6 +37,8 @@ Route::prefix('admin')->group(function () {
 
         return view('admin.records.index', compact('records'));
     })->name('records');
+
+    Route::view('download_covers', 'admin.download_covers')->name('download-covers')->name('admin.covers');
 });
 
 Route::view('dashboard', 'dashboard')
