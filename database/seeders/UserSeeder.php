@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // Insert specific users
-        DB::table('users')->insert([
+        DB::table('users')->insertOrIgnore([
             [
                 'name' => 'John Doe',
                 'email' => 'john.doe@example.com',
@@ -49,6 +49,6 @@ class UserSeeder extends Seeder
         }
 
         // Perform a batch insert
-        DB::table('users')->insert($users);
+        DB::table('users')->insertOrIgnore($users);
     }
 }

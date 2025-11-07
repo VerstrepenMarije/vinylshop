@@ -15,7 +15,7 @@ class GenreSeeder extends Seeder
     public function run(): void
     {
         // Clear the table first to avoid duplicates if seeder runs multiple times
-        DB::table('genres')->delete();
+        DB::table('genres')->truncate();
 
         // Insert genres
         DB::table('genres')->insert(
@@ -37,6 +37,7 @@ class GenreSeeder extends Seeder
                 ['name' => 'folk',          'created_at' => now()],
                 ['name' => 'hip hop',       'created_at' => now()],
                 ['name' => 'soul',          'created_at' => now()],
-            ]);
+            ]
+        );
     }
 }

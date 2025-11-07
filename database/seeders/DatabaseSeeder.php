@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         // Call seeders in the correct order
         $this->call([
-            UserSeeder::class,
             GenreSeeder::class,    // Must run before RecordSeeder
+            UserSeeder::class,
             RecordSeeder::class,
         ]);
     }

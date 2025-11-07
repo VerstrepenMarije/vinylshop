@@ -5,6 +5,7 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Demo;   // Import the Livewire component
 use Laravel\Fortify\Features;
 
 //Route::get('/', function () {
@@ -24,20 +25,8 @@ Route::view('playground', 'playground')->name('playground');
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('records', function (){
-        $records = [                            // Define an array of records
-            'Queen - Greatest Hits',
-            'The Rolling Stones - Sticky Fingers',
-            'The Beatles - Abbey Road'
-        ];
-
-//    return view('admin.records.index', [
-//        'records' => $records  // Pass the $records array with the key 'records'
-//    ]);
-
-        return view('admin.records.index', compact('records'));
-    })->name('records');
-
+    Route::redirect('/', '/admin/records');
+    Route::get('records', Demo::class)->name('admin.records');
     Route::view('download_covers', 'admin.download_covers')->name('download-covers')->name('admin.covers');
 });
 
