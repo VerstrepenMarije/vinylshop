@@ -7,6 +7,7 @@ use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Demo;   // Import the Livewire component
 use Laravel\Fortify\Features;
+use App\Livewire\Shop;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -20,6 +21,9 @@ Route::view('/', 'home')->name('home');
 //})->name('contact');
 
 Route::view('contact', 'contact')->name('contact');     // Use the single-line view notation
+
+//Shop route
+Route::get('shop', Shop::class)->name('shop');
 
 Route::view('playground', 'playground')->name('playground');
 

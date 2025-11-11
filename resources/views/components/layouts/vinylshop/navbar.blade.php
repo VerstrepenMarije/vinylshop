@@ -8,7 +8,7 @@
 
 {{-- visible for all --}}
 <flux:navlist variant="outline">
-    <flux:navlist.item icon="disc-3" href="#">Shop</flux:navlist.item>
+    <flux:navlist.item icon="disc-3" href="{{ route('shop') }}">Shop</flux:navlist.item>
     <flux:navlist.item icon="envelope" href="{{ route('contact') }}">Contact</flux:navlist.item>
     <flux:navlist.item icon="shopping-cart" href="#">Basket</flux:navlist.item>
 </flux:navlist>
