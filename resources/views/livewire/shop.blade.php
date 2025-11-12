@@ -32,7 +32,7 @@
                         <div class="flex space-x-2">
                             @if($record->stock > 0)
                             <flux:button
-                                icon="shopping-bag" tooltip="Add to basket" variant="subtle"
+                                wire:click="addToBasket({{ $record->id }})"                                icon="shopping-bag" tooltip="Add to basket" variant="subtle"
                                 class="cursor-pointer border border-zinc-200 dark:border-zinc-700"/>
                             @else
                                 <flux:button
@@ -40,6 +40,7 @@
                                     class="cursor-pointer border border-zinc-200 dark:border-zinc-700 text-red-200! dark:text-red-700/75!"/>
                             @endif
                             <flux:button
+                                wire:click="showTracks({{ $record->id }})"
                                 icon="musical-note" tooltip="Show tracks" variant="subtle"
                                 class="cursor-pointer border border-zinc-200 dark:border-zinc-700"/>
                         </div>
@@ -52,7 +53,36 @@
     </div>
 
     {{-- Detail Modal will go here --}}
-
+    <flux:modal name="tracksModal" class="w-[500px]">
+        <div class="flex items-top border-b border-zinc-300 pb-2 gap-4">
+            <img class="size-24"
+                 src="{{ $selectedRecord->cover ?? asset('storage/covers/no-cover.png') }}" alt="">
+            <div>
+                <flux:heading size="lg">{{ $selectedRecord->artist ?? '' }}</flux:heading>
+                <flux:subheading>{{ $selectedRecord->title ?? '' }}</flux:subheading>
+            </div>
+        </div>
+        @isset($selectedRecord->tracks)
+            <x-itf.table cols="w-8, w-auto, w-24">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Track</th>
+                    <th>Length</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($selectedRecord->tracks as $track)
+                    <tr class="border-t border-zinc-100">
+                        <td>{{ $track['position'] }}</td>
+                        <td>{{ $track['title'] }}</td>
+                        <td>{{ $track['length'] }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </x-itf.table>
+        @endif
+    </flux:modal>
     {{-- No records found message will go here --}}
 
     <x-itf.livewire-log :records="$records"/>
